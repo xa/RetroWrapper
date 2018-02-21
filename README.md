@@ -1,5 +1,5 @@
 # RetroWrapper
-Enables you to able to play _fixed_ old versions of minecraft without ever touching .jar files, even offline!
+Enables you to play _fixed_ old versions of minecraft without ever touching .jar files, works even when offline!
 
 **WHAT IS DONE**
 - Fixed indev loading
