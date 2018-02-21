@@ -33,65 +33,65 @@ class JsonLiteral extends JsonValue {
   private final boolean isFalse;
 
   JsonLiteral(String value) {
-    this.value = value;
-    isNull = "null".equals(value);
-    isTrue = "true".equals(value);
-    isFalse = "false".equals(value);
+	this.value = value;
+	isNull = "null".equals(value);
+	isTrue = "true".equals(value);
+	isFalse = "false".equals(value);
   }
 
   @Override
   void write(JsonWriter writer) throws IOException {
-    writer.writeLiteral(value);
+	writer.writeLiteral(value);
   }
 
   @Override
   public String toString() {
-    return value;
+	return value;
   }
 
   @Override
   public int hashCode() {
-    return value.hashCode();
+	return value.hashCode();
   }
 
   @Override
   public boolean isNull() {
-    return isNull;
+	return isNull;
   }
 
   @Override
   public boolean isTrue() {
-    return isTrue;
+	return isTrue;
   }
 
   @Override
   public boolean isFalse() {
-    return isFalse;
+	return isFalse;
   }
 
   @Override
   public boolean isBoolean() {
-    return isTrue || isFalse;
+	return isTrue || isFalse;
   }
 
   @Override
   public boolean asBoolean() {
-    return isNull ? super.asBoolean() : isTrue;
+	return isNull ? super.asBoolean() : isTrue;
   }
 
   @Override
   public boolean equals(Object object) {
-    if (this == object) {
-      return true;
-    }
-    if (object == null) {
-      return false;
-    }
-    if (getClass() != object.getClass()) {
-      return false;
-    }
-    JsonLiteral other = (JsonLiteral)object;
-    return value.equals(other.value);
+	if (this == object) {
+	  return true;
+	}
+	if (object == null) {
+	  return false;
+	}
+	if (getClass() != object.getClass()) {
+	  return false;
+	}
+	JsonLiteral other = (JsonLiteral)object;
+	return value.equals(other.value);
   }
 
 }

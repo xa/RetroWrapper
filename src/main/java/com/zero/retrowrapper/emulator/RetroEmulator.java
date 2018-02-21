@@ -12,41 +12,41 @@ public class RetroEmulator extends Thread implements Runnable
 {
 	private static RetroEmulator instance;
 	
-	private EmulatorRegistry registry;    
+	private EmulatorRegistry registry;	
 	private File directory;
 	private File mapsDirectory;
 	private File cacheDirectory;
 
-    @Override
-    public void run()
-    {
-    	instance = this;
-    	
-    	System.out.println("Old servers emulator is running!");
-    	
-    	registry = new EmulatorRegistry();
-    	registry.registerAll();
-    	
-    	directory = new File(Launch.minecraftHome, "retrowrapper");
-    	directory.mkdirs();
-    	mapsDirectory = new File(RetroEmulator.getInstance().getDirectory(), "maps");
-    	mapsDirectory.mkdir();
-    	cacheDirectory = new File(RetroEmulator.getInstance().getDirectory(), "cache");
-    	cacheDirectory.mkdir();
+	@Override
+	public void run()
+	{
+		instance = this;
+		
+		System.out.println("Old servers emulator is running!");
+		
+		registry = new EmulatorRegistry();
+		registry.registerAll();
+		
+		directory = new File(Launch.minecraftHome, "retrowrapper");
+		directory.mkdirs();
+		mapsDirectory = new File(RetroEmulator.getInstance().getDirectory(), "maps");
+		mapsDirectory.mkdir();
+		cacheDirectory = new File(RetroEmulator.getInstance().getDirectory(), "cache");
+		cacheDirectory.mkdir();
   
-        try(ServerSocket server = new ServerSocket(EmulatorConfig.getInstance().getPort()))
-        {                     
-            while(true)
-            {
-                Socket socket = server.accept();
-                new SocketEmulator(socket).parseIncoming();;
-            }
-        }
-        catch(Exception e)
-        {
-        	e.printStackTrace();
-        }
-    }        	
+		try(ServerSocket server = new ServerSocket(EmulatorConfig.getInstance().getPort()))
+		{					 
+			while(true)
+			{
+				Socket socket = server.accept();
+				new SocketEmulator(socket).parseIncoming();;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}			
 
 	public EmulatorRegistry getRegistry()
 	{

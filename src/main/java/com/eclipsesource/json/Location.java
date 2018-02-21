@@ -43,34 +43,34 @@ public class Location {
   public final int column;
 
   Location(int offset, int line, int column) {
-    this.offset = offset;
-    this.column = column;
-    this.line = line;
+	this.offset = offset;
+	this.column = column;
+	this.line = line;
   }
 
   @Override
   public String toString() {
-    return line + ":" + column;
+	return line + ":" + column;
   }
 
   @Override
   public int hashCode() {
-    return offset;
+	return offset;
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    Location other = (Location)obj;
-    return offset == other.offset && column == other.column && line == other.line;
+	if (this == obj) {
+	  return true;
+	}
+	if (obj == null) {
+	  return false;
+	}
+	if (getClass() != obj.getClass()) {
+	  return false;
+	}
+	Location other = (Location)obj;
+	return offset == other.offset && column == other.column && line == other.line;
   }
 
 }

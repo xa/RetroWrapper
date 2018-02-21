@@ -30,8 +30,8 @@ public class ParseException extends RuntimeException {
   private final Location location;
 
   ParseException(String message, Location location) {
-    super(message + " at " + location);
-    this.location = location;
+	super(message + " at " + location);
+	this.location = location;
   }
 
   /**
@@ -40,7 +40,7 @@ public class ParseException extends RuntimeException {
    * @return the error location
    */
   public Location getLocation() {
-    return location;
+	return location;
   }
 
   /**
@@ -52,7 +52,7 @@ public class ParseException extends RuntimeException {
    */
   @Deprecated
   public int getOffset() {
-    return location.offset;
+	return location.offset;
   }
 
   /**
@@ -63,7 +63,7 @@ public class ParseException extends RuntimeException {
    */
   @Deprecated
   public int getLine() {
-    return location.line;
+	return location.line;
   }
 
   /**
@@ -75,7 +75,7 @@ public class ParseException extends RuntimeException {
    */
   @Deprecated
   public int getColumn() {
-    return location.column;
+	return location.column;
   }
 
 }

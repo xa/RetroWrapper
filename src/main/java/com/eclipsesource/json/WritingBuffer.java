@@ -38,46 +38,46 @@ class WritingBuffer extends Writer {
   private int fill = 0;
 
   WritingBuffer(Writer writer) {
-    this(writer, 16);
+	this(writer, 16);
   }
 
   WritingBuffer(Writer writer, int bufferSize) {
-    this.writer = writer;
-    buffer = new char[bufferSize];
+	this.writer = writer;
+	buffer = new char[bufferSize];
   }
 
   @Override
   public void write(int c) throws IOException {
-    if (fill > buffer.length - 1) {
-      flush();
-    }
-    buffer[fill++] = (char)c;
+	if (fill > buffer.length - 1) {
+	  flush();
+	}
+	buffer[fill++] = (char)c;
   }
 
   @Override
   public void write(char[] cbuf, int off, int len) throws IOException {
-    if (fill > buffer.length - len) {
-      flush();
-      if (len > buffer.length) {
-        writer.write(cbuf, off, len);
-        return;
-      }
-    }
-    System.arraycopy(cbuf, off, buffer, fill, len);
-    fill += len;
+	if (fill > buffer.length - len) {
+	  flush();
+	  if (len > buffer.length) {
+		writer.write(cbuf, off, len);
+		return;
+	  }
+	}
+	System.arraycopy(cbuf, off, buffer, fill, len);
+	fill += len;
   }
 
   @Override
   public void write(String str, int off, int len) throws IOException {
-    if (fill > buffer.length - len) {
-      flush();
-      if (len > buffer.length) {
-        writer.write(str, off, len);
-        return;
-      }
-    }
-    str.getChars(off, off + len, buffer, fill);
-    fill += len;
+	if (fill > buffer.length - len) {
+	  flush();
+	  if (len > buffer.length) {
+		writer.write(str, off, len);
+		return;
+	  }
+	}
+	str.getChars(off, off + len, buffer, fill);
+	fill += len;
   }
 
   /**
@@ -85,8 +85,8 @@ class WritingBuffer extends Writer {
    */
   @Override
   public void flush() throws IOException {
-    writer.write(buffer, 0, fill);
-    fill = 0;
+	writer.write(buffer, 0, fill);
+	fill = 0;
   }
 
   /**

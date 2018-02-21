@@ -36,7 +36,7 @@ package com.eclipsesource.json;
  *
  * <pre>
  * ["lorem ipsum"]
- *  ^            ^
+ *  ^			^
  *  startString  endString
  * </pre>
  * <p>
@@ -47,9 +47,9 @@ package com.eclipsesource.json;
  * </p>
  *
  * @param <A>
- *          The type of handlers used for JSON arrays
+ *		  The type of handlers used for JSON arrays
  * @param <O>
- *          The type of handlers used for JSON objects
+ *		  The type of handlers used for JSON objects
  * @see JsonParser
  */
 public abstract class JsonHandler<A, O> {
@@ -62,7 +62,7 @@ public abstract class JsonHandler<A, O> {
    * @return the current parser location
    */
   protected Location getLocation() {
-    return parser.getLocation();
+	return parser.getLocation();
   }
 
   /**
@@ -91,7 +91,7 @@ public abstract class JsonHandler<A, O> {
    * input. This method will be called after reading the last character of the literal.
    *
    * @param value
-   *          the parsed boolean value
+   *		  the parsed boolean value
    */
   public void endBoolean(boolean value) {
   }
@@ -108,7 +108,7 @@ public abstract class JsonHandler<A, O> {
    * closing double quote character (<code>'&quot;'</code>).
    *
    * @param string
-   *          the parsed string
+   *		  the parsed string
    */
   public void endString(String string) {
   }
@@ -125,7 +125,7 @@ public abstract class JsonHandler<A, O> {
    * last character of the number.
    *
    * @param string
-   *          the parsed number string
+   *		  the parsed number string
    */
   public void endNumber(String string) {
   }
@@ -143,7 +143,7 @@ public abstract class JsonHandler<A, O> {
    * @return a handler for this array, or <code>null</code> if not needed
    */
   public A startArray() {
-    return null;
+	return null;
   }
 
   /**
@@ -151,8 +151,8 @@ public abstract class JsonHandler<A, O> {
    * closing square bracket character (<code>']'</code>).
    *
    * @param array
-   *          the array handler returned from {@link #startArray()}, or <code>null</code> if not
-   *          provided
+   *		  the array handler returned from {@link #startArray()}, or <code>null</code> if not
+   *		  provided
    */
   public void endArray(A array) {
   }
@@ -163,8 +163,8 @@ public abstract class JsonHandler<A, O> {
    * method for the specific element type ({@link #startString()}, {@link #startNumber()}, etc.).
    *
    * @param array
-   *          the array handler returned from {@link #startArray()}, or <code>null</code> if not
-   *          provided
+   *		  the array handler returned from {@link #startArray()}, or <code>null</code> if not
+   *		  provided
    */
   public void startArrayValue(A array) {
   }
@@ -176,8 +176,8 @@ public abstract class JsonHandler<A, O> {
    * endNumber()}, etc.).
    *
    * @param array
-   *          the array handler returned from {@link #startArray()}, or <code>null</code> if not
-   *          provided
+   *		  the array handler returned from {@link #startArray()}, or <code>null</code> if not
+   *		  provided
    */
   public void endArrayValue(A array) {
   }
@@ -197,7 +197,7 @@ public abstract class JsonHandler<A, O> {
    * @return a handler for this object, or <code>null</code> if not needed
    */
   public O startObject() {
-    return null;
+	return null;
   }
 
   /**
@@ -205,7 +205,7 @@ public abstract class JsonHandler<A, O> {
    * closing curly bracket character (<code>'}'</code>).
    *
    * @param object
-   *          the object handler returned from {@link #startObject()}, or null if not provided
+   *		  the object handler returned from {@link #startObject()}, or null if not provided
    */
   public void endObject(O object) {
   }
@@ -215,8 +215,8 @@ public abstract class JsonHandler<A, O> {
    * called when reading the opening quote character ('&quot;') of the member name.
    *
    * @param object
-   *          the object handler returned from {@link #startObject()}, or <code>null</code> if not
-   *          provided
+   *		  the object handler returned from {@link #startObject()}, or <code>null</code> if not
+   *		  provided
    */
   public void startObjectName(O object) {
   }
@@ -226,9 +226,9 @@ public abstract class JsonHandler<A, O> {
    * reading the closing quote character (<code>'"'</code>) of the member name.
    *
    * @param object
-   *          the object handler returned from {@link #startObject()}, or null if not provided
+   *		  the object handler returned from {@link #startObject()}, or null if not provided
    * @param name
-   *          the parsed member name
+   *		  the parsed member name
    */
   public void endObjectName(O object, String name) {
   }
@@ -238,10 +238,10 @@ public abstract class JsonHandler<A, O> {
    * called when reading the opening quote character ('&quot;') of the member name.
    *
    * @param object
-   *          the object handler returned from {@link #startObject()}, or <code>null</code> if not
-   *          provided
+   *		  the object handler returned from {@link #startObject()}, or <code>null</code> if not
+   *		  provided
    * @param name
-   *          the member name
+   *		  the member name
    */
   public void startObjectValue(O object, String name) {
   }
@@ -253,9 +253,9 @@ public abstract class JsonHandler<A, O> {
    * endNumber()}, etc.).
    *
    * @param object
-   *          the object handler returned from {@link #startObject()}, or null if not provided
+   *		  the object handler returned from {@link #startObject()}, or null if not provided
    * @param name
-   *          the parsed member name
+   *		  the parsed member name
    */
   public void endObjectValue(O object, String name) {
   }

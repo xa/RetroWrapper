@@ -36,8 +36,8 @@ public class SaveHandler extends EmulatorHandler implements IHandler
    		dis.readFully(level);
    		
    		os.write("ok\n".getBytes());
-        dis.close();
-        
+		dis.close();
+		
 		File fileMap = new File(RetroEmulator.getInstance().getMapsDirectory(), "map" + id + ".mclevel");
 		File fileMapMeta = new File(RetroEmulator.getInstance().getMapsDirectory(), "map" + id + ".txt");
 		

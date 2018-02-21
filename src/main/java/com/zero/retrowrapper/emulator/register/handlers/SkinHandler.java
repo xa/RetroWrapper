@@ -23,7 +23,7 @@ import com.zero.retrowrapper.emulator.register.EmulatorHandler;
 
 public class SkinHandler extends EmulatorHandler implements IHandler
 {
-    private HashMap<String, byte[]> skinsCache = new HashMap<>();
+	private HashMap<String, byte[]> skinsCache = new HashMap<>();
 
 	public SkinHandler()
 	{
@@ -33,32 +33,32 @@ public class SkinHandler extends EmulatorHandler implements IHandler
 	@Override
 	public void handle(OutputStream os, String get, byte[] data) throws IOException
 	{
-        String username = get.replace("/skin/", "").replace(".png", "");
-        
-        if(skinsCache.containsKey(username))
-        {
-            os.write(skinsCache.get(username));
-        }else
-        {			                
-        	byte[] bytes3 = downloadSkin(username);
-        	if(bytes3 != null)
-        	{
-                BufferedImage imgSkinRaw = ImageIO.read(new ByteArrayInputStream(bytes3));
-                BufferedImage imgSkinFixed = new BufferedImage(64, 32, BufferedImage.TYPE_INT_ARGB);
-                
-                imgSkinFixed.getGraphics().drawImage(imgSkinRaw, 0, 0, null);
-                
-                ByteArrayOutputStream osSkin = new ByteArrayOutputStream();
-                
-                ImageIO.write(imgSkinFixed, "png", osSkin);
-                osSkin.flush();
-                
-                byte[] bytes = osSkin.toByteArray();                
-                os.write(bytes);
-                
-                skinsCache.put(username, bytes);
-        	}
-        }
+		String username = get.replace("/skin/", "").replace(".png", "");
+		
+		if(skinsCache.containsKey(username))
+		{
+			os.write(skinsCache.get(username));
+		}else
+		{							
+			byte[] bytes3 = downloadSkin(username);
+			if(bytes3 != null)
+			{
+				BufferedImage imgSkinRaw = ImageIO.read(new ByteArrayInputStream(bytes3));
+				BufferedImage imgSkinFixed = new BufferedImage(64, 32, BufferedImage.TYPE_INT_ARGB);
+				
+				imgSkinFixed.getGraphics().drawImage(imgSkinRaw, 0, 0, null);
+				
+				ByteArrayOutputStream osSkin = new ByteArrayOutputStream();
+				
+				ImageIO.write(imgSkinFixed, "png", osSkin);
+				osSkin.flush();
+				
+				byte[] bytes = osSkin.toByteArray();				
+				os.write(bytes);
+				
+				skinsCache.put(username, bytes);
+			}
+		}
 	}
 	
 	private byte[] downloadSkin(String username) throws IOException
@@ -88,7 +88,7 @@ public class SkinHandler extends EmulatorHandler implements IHandler
 					fos.close();
 				}
 				
-	           	return skinBytes;
+			   	return skinBytes;
 			}
 		}catch(Exception e)
 		{
