@@ -30,9 +30,9 @@ Go inside that folder and add -retro to all filenames inside it
 
 Edit <version>.json and
   
-- add -retro to id (eg. replace *"id": "c0.30_01c",* with *"id": "c0.30_01c-retro",*)
-- replace *libraries":* with *"libraries": [{"name": "net.minecraft:launchwrapper:1.6"},*
-- replace *--tweakClass net.minecraft.launchwrapper....VanillaTweaker* with *--tweakClass com.zero.retrowrapper.RetroTweaker*
+- add -retro to id (eg. replace **"id": "c0.30_01c",* with *"id": "c0.30_01c-retro",**)
+- replace **"libraries":** with **"libraries": [{"name": "net.minecraft:launchwrapper:1.6"},**
+- replace **--tweakClass net.minecraft.launchwrapper....VanillaTweaker** with **--tweakClass com.zero.retrowrapper.RetroTweaker**
   
 Launch Minecraft and choose newly created version!
 
