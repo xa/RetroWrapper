@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="bin" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar"/>
-	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/org/ow2/asm/asm-all/5.2/asm-all-5.2.jar" sourcepath="/tmp/.org.sf.feeling.decompiler1519465997831/source/asm-all-5.2-sources.jar"/>
+	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/org/ow2/asm/asm-all/5.2/asm-all-5.2.jar" sourcepath="/tmp/.org.sf.feeling.decompiler1519471787613/source/asm-all-5.2-sources-1519478971386.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

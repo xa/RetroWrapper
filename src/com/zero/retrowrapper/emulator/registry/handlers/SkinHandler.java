@@ -25,15 +25,15 @@ public class SkinHandler extends EmulatorHandler implements IHandler
 {
 	private HashMap<String, byte[]> skinsCache = new HashMap<>();
 
-	public SkinHandler()
+	public SkinHandler(String url)
 	{
-		super("/skin/");
+		super(url);
 	}
 
 	@Override
 	public void handle(OutputStream os, String get, byte[] data) throws IOException
 	{
-		String username = get.replace("/skin/", "").replace(".png", "");
+		String username = get.replace(url, "").replace(".png", "");
 		
 		if(skinsCache.containsKey(username))
 		{

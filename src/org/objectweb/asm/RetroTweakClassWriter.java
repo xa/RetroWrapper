@@ -67,7 +67,15 @@ public class RetroTweakClassWriter extends ClassWriter
 			switch(item.b)
 			{
 				case UTF8:
-					if(item.g.contains(".net"))
+					if(item.g.contains(".com"))
+					{
+						System.out.println("Found URL!: " + item.g);
+						String finalstr = item.g;
+						finalstr = (item.g.contains("http://") ? "http://" : "") + "127.0.0.1:"+EmulatorConfig.getInstance().getPort()+item.g.replace(finalstr.split(".com")[0]+".com", "");
+						System.out.println("Replaced with: " + finalstr);
+						writer.d.putByte(UTF8).putUTF8(finalstr);												
+					}
+					else if(item.g.contains(".net"))
 					{
 						System.out.println("Found URL!: " + item.g);
 						String finalstr = item.g;
@@ -76,7 +84,7 @@ public class RetroTweakClassWriter extends ClassWriter
 						{
 							finalstr = "127.0.0.1";
 						}
-						else if(finalstr.contains(".net"))
+						else
 						{
 							finalstr = (item.g.contains("http://") ? "http://" : "") + "127.0.0.1:"+EmulatorConfig.getInstance().getPort()+item.g.replace(finalstr.split(".net")[0]+".net", "");
 						}

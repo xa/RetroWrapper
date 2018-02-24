@@ -10,8 +10,6 @@ import com.zero.retrowrapper.emulator.RetroEmulator;
 
 import java.applet.Applet;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Constructor;
@@ -54,10 +52,13 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 		{
 			Class<?> clazz;
 	
+			boolean veryOld = false;
+			
 			try
 			{
 				clazz = getaClass("net.minecraft.client.MinecraftApplet");
 			} catch (ClassNotFoundException ignored) {
+				veryOld = true;
 				clazz = getaClass("com.mojang.minecraft.MinecraftApplet");
 			}
 	
@@ -77,7 +78,11 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 			object.setStub(fakeLauncher);
 			
 			object.setSize(854, 480);
-			object.getClass().getMethod("init").invoke(object);			
+			
+			if(veryOld)
+			{
+				object.getClass().getMethod("init").invoke(object);
+			}
 			
 			for (Field field : clazz.getDeclaredFields())
 			{				
@@ -88,24 +93,29 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 					System.out.println("Found likely Minecraft candidate: " + field);
 	
 					Field fileField = getWorkingDirField(name);
-					field.setAccessible(true);
-					Object mcObj = field.get(object);
-					System.out.println(mcObj);
-					Field appletField = null;
-					for(Field f: mcObj.getClass().getDeclaredFields())
+					
+					if(veryOld)
 					{
-						if(f.getType().getName().equals("boolean") && Modifier.isPublic(f.getModifiers()))
+						field.setAccessible(true);
+						Object mcObj = field.get(object);
+						System.out.println(mcObj);
+						Field appletField = null;
+						for(Field f: mcObj.getClass().getDeclaredFields())
 						{
-							appletField = f;
-							break;
+							if(f.getType().getName().equals("boolean") && Modifier.isPublic(f.getModifiers()))
+							{
+								appletField = f;
+								break;
+							}
+						}
+						
+						if(appletField != null)
+						{
+							System.out.println("Applet mode: "+appletField.get(mcObj));
+							appletField.set(mcObj, false);
 						}
 					}
 					
-					if(appletField != null)
-					{
-						System.out.println("Applet mode: "+appletField.get(mcObj));
-						appletField.set(mcObj, false);
-					}
 					if (fileField != null)
 					{
 						System.out.println("Found File, changing to " + Launch.minecraftHome);

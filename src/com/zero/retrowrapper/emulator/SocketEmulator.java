@@ -81,8 +81,18 @@ public class SocketEmulator
 	   	
 	   	if(handler != null)
 	   	{
-	   		handler.sendHeaders(os);
-	   		handler.handle(os, get, data);
+	   		try
+	   		{
+	   			System.out.println("Request: "+get);
+	   			handler.sendHeaders(os);
+	   			handler.handle(os, get, data);
+	   		}catch(Exception e)
+	   		{
+		   		System.out.println("***************************************");
+		   		System.out.println("   Exception in handling URL: "+get);
+		   		System.out.println("***************************************");
+	   			e.printStackTrace();
+	   		}
 	   	}else
 	   	{
 	   		System.out.println("***************************************");

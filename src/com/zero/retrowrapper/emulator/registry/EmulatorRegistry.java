@@ -7,6 +7,7 @@ import com.zero.retrowrapper.emulator.registry.handlers.GameHandler;
 import com.zero.retrowrapper.emulator.registry.handlers.ListmapsHandler;
 import com.zero.retrowrapper.emulator.registry.handlers.LoadHandler;
 import com.zero.retrowrapper.emulator.registry.handlers.ResourcesHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.ResourcesHandlerBeta;
 import com.zero.retrowrapper.emulator.registry.handlers.SaveHandler;
 import com.zero.retrowrapper.emulator.registry.handlers.SkinHandler;
 
@@ -33,11 +34,13 @@ public class EmulatorRegistry
 
 	public void registerAll()
 	{
-		register(new SkinHandler());
 		register(new GameHandler());
 		register(new SaveHandler());
 		register(new LoadHandler());
 		register(new ListmapsHandler());
 		register(new ResourcesHandler());
+		register(new ResourcesHandlerBeta());
+		register(new SkinHandler("/skin/"));
+		register(new SkinHandler("/MinecraftSkins/"));
 	}
 }
