@@ -114,8 +114,7 @@ public class RetroTweakInjector implements IClassTransformer
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			System.exit(0);
-			return null;
+			return bytesOld;
 		}
 	}
 

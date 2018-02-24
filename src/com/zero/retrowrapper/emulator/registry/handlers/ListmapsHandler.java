@@ -1,4 +1,4 @@
-package com.zero.retrowrapper.emulator.register.handlers;
+package com.zero.retrowrapper.emulator.registry.handlers;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import java.util.Scanner;
 
 import com.zero.retrowrapper.emulator.RetroEmulator;
-import com.zero.retrowrapper.emulator.register.IHandler;
-import com.zero.retrowrapper.emulator.register.EmulatorHandler;
+import com.zero.retrowrapper.emulator.registry.EmulatorHandler;
+import com.zero.retrowrapper.emulator.registry.IHandler;
 
 public class ListmapsHandler extends EmulatorHandler implements IHandler
 {

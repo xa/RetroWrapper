@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-import com.zero.retrowrapper.emulator.register.IHandler;
+import com.zero.retrowrapper.emulator.registry.IHandler;
 
 public class SocketEmulator
 {

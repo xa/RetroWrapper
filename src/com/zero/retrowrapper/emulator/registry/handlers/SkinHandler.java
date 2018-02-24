@@ -1,4 +1,4 @@
-package com.zero.retrowrapper.emulator.register.handlers;
+package com.zero.retrowrapper.emulator.registry.handlers;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -18,8 +18,8 @@ import javax.imageio.ImageIO;
 
 import com.zero.retrowrapper.emulator.ByteUtils;
 import com.zero.retrowrapper.emulator.RetroEmulator;
-import com.zero.retrowrapper.emulator.register.IHandler;
-import com.zero.retrowrapper.emulator.register.EmulatorHandler;
+import com.zero.retrowrapper.emulator.registry.EmulatorHandler;
+import com.zero.retrowrapper.emulator.registry.IHandler;
 
 public class SkinHandler extends EmulatorHandler implements IHandler
 {

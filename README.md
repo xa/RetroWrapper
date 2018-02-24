@@ -7,10 +7,17 @@ Enables you to play _fixed_ old versions of minecraft without ever touching .jar
 - Sounds
 - Saving
 - Online Saving
+- Mouse movement on very old classic
 
-**HOW TO USE** (dont worry I'll make easy installer in few days)
+**HOW TO USE (automatic)**
 
-Download retrowrapper-1.0.jar from releases.
+Download retrowrapper-installer.jar from releases and launch it.
+
+Select version you want to wrap and click 'Ok'
+
+**HOW TO USE (manual)**
+
+Download retrowrapper-1.1.jar from releases.
 
 Navigate to .minecraft/libraries/com/
 
@@ -18,9 +25,9 @@ Create new folder 'zero' and navigate to it
 
 Create new folder 'retrowrapper' inside 'zero' and navigate to it
 
-Create new folder '1.0' inside 'retrowrapper' and navigate to it
+Create new folder '1.1' inside 'retrowrapper' and navigate to it
 
-Copy retrowrapper-1.0.jar to '1.0'
+Copy retrowrapper-1.1.jar to '1.1'
 
 Now go into .minecraft/versions/
 

@@ -1,14 +1,14 @@
-package com.zero.retrowrapper.emulator.register;
+package com.zero.retrowrapper.emulator.registry;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zero.retrowrapper.emulator.register.handlers.GameHandler;
-import com.zero.retrowrapper.emulator.register.handlers.ListmapsHandler;
-import com.zero.retrowrapper.emulator.register.handlers.LoadHandler;
-import com.zero.retrowrapper.emulator.register.handlers.ResourcesHandler;
-import com.zero.retrowrapper.emulator.register.handlers.SaveHandler;
-import com.zero.retrowrapper.emulator.register.handlers.SkinHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.GameHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.ListmapsHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.LoadHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.ResourcesHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.SaveHandler;
+import com.zero.retrowrapper.emulator.registry.handlers.SkinHandler;
 
 public class EmulatorRegistry
 {

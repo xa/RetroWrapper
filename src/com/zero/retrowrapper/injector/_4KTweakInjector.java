@@ -63,7 +63,7 @@ public class _4KTweakInjector implements IClassTransformer
 			}
 		});
 	  
-		LauncherFake fakeLauncher = new LauncherFake(new HashMap<String, String>());
+		LauncherFake fakeLauncher = new LauncherFake(new HashMap<String, String>(), applet);
 		applet.setStub(fakeLauncher);
 
 		fakeLauncher.setLayout(new BorderLayout());

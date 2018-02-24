@@ -10,6 +10,8 @@ import com.zero.retrowrapper.emulator.RetroEmulator;
 
 import java.applet.Applet;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Constructor;
@@ -42,8 +44,8 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 	{
 		
 		System.out.println("******************************");
-		System.out.println("*	 old mojang servers	 *");
-		System.out.println("*	   emulator by 000	  *");
+		System.out.println("*     old mojang servers     *");
+		System.out.println("*       emulator by 000      *");
 		System.out.println("******************************");
 		
 		new RetroEmulator().start();		
@@ -59,11 +61,26 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 				clazz = getaClass("com.mojang.minecraft.MinecraftApplet");
 			}
 	
+			final Map<String, String> params = new HashMap<String, String>();
+
+			String username = args.length > 0 ? args[0] : "Player" + System.currentTimeMillis() % 1000;
+			String sessionId = args.length > 1 ? args[1] : "-";
+
+			params.put("username", username);
+			params.put("sessionid", sessionId);
+			params.put("haspaid", "true");
+			
 			Constructor<?> constructor = clazz.getConstructor();
-			Object object = constructor.newInstance();
-	
+			Applet object = (Applet)constructor.newInstance();
+
+			LauncherFake fakeLauncher = new LauncherFake(params, object);
+			object.setStub(fakeLauncher);
+			
+			object.setSize(854, 480);
+			object.getClass().getMethod("init").invoke(object);			
+			
 			for (Field field : clazz.getDeclaredFields())
-			{
+			{				
 				String name = field.getType().getName();
 	
 				if (!name.contains("awt") && !name.contains("java") && !name.equals("long"))
@@ -71,6 +88,24 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 					System.out.println("Found likely Minecraft candidate: " + field);
 	
 					Field fileField = getWorkingDirField(name);
+					field.setAccessible(true);
+					Object mcObj = field.get(object);
+					System.out.println(mcObj);
+					Field appletField = null;
+					for(Field f: mcObj.getClass().getDeclaredFields())
+					{
+						if(f.getType().getName().equals("boolean") && Modifier.isPublic(f.getModifiers()))
+						{
+							appletField = f;
+							break;
+						}
+					}
+					
+					if(appletField != null)
+					{
+						System.out.println("Applet mode: "+appletField.get(mcObj));
+						appletField.set(mcObj, false);
+					}
 					if (fileField != null)
 					{
 						System.out.println("Found File, changing to " + Launch.minecraftHome);
@@ -81,7 +116,7 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 				}
 			}
 	
-			startMinecraft((Applet) object, args);
+			startMinecraft(fakeLauncher, object, args);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -89,21 +124,8 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 		}
 	}
 
-	private static void startMinecraft(final Applet applet, String[] args)
+	private static void startMinecraft(LauncherFake fakeLauncher, final Applet applet, String[] args)
 	{
-		final Map<String, String> params = new HashMap<String, String>();
-
-		// Extract params
-		String name = "Player" + System.currentTimeMillis() % 1000;
-		if (args.length > 0) name = args[0];
-
-		String sessionId = "-";
-		if (args.length > 1) sessionId = args[1];
-
-		params.put("username", name);
-		params.put("sessionid", sessionId);
-		params.put("haspaid", "true");
-
 		final Frame launcherFrameFake = new Frame();
 		launcherFrameFake.setTitle("Minecraft");
 		launcherFrameFake.setBackground(Color.BLACK);
@@ -125,10 +147,7 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 				System.exit(1);
 			}
 		});
-
-		LauncherFake fakeLauncher = new LauncherFake(params);
-		applet.setStub(fakeLauncher);
-
+	
 		fakeLauncher.setLayout(new BorderLayout());
 		fakeLauncher.add(applet, BorderLayout.CENTER);
 		fakeLauncher.validate();

@@ -14,14 +14,21 @@ public class LauncherFake extends Applet implements AppletStub
 	private static final long serialVersionUID = 1L;
 
 	private Map<String, String> params = new HashMap<String, String>();
-
-	public LauncherFake(Map<String, String> params)
+	
+	public LauncherFake(Map<String, String> params, Applet applet)
 	{
 		this.params = params;
 	}
 
 	@Override
 	public void appletResize(int width, int height) {}
+
+	@Override
+	public void setSize(int width, int height)
+	{
+	   super.setSize(width,height);
+	   validate();
+	}
 
 	@Override
 	public boolean isActive()

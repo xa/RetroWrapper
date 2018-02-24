@@ -1,4 +1,4 @@
-package com.zero.retrowrapper.emulator.register;
+package com.zero.retrowrapper.emulator.registry;
 
 import java.io.IOException;
 import java.io.OutputStream;

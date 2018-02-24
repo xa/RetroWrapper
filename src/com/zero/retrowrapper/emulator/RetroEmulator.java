@@ -4,7 +4,7 @@ import java.io.File;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.zero.retrowrapper.emulator.register.EmulatorRegistry;
+import com.zero.retrowrapper.emulator.registry.EmulatorRegistry;
 
 import net.minecraft.launchwrapper.Launch;
 

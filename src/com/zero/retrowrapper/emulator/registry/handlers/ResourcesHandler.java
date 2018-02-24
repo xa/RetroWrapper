@@ -1,4 +1,4 @@
-package com.zero.retrowrapper.emulator.register.handlers;
+package com.zero.retrowrapper.emulator.registry.handlers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,8 +15,8 @@ import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 import com.zero.retrowrapper.emulator.ByteUtils;
 import com.zero.retrowrapper.emulator.RetroEmulator;
-import com.zero.retrowrapper.emulator.register.IHandler;
-import com.zero.retrowrapper.emulator.register.EmulatorHandler;
+import com.zero.retrowrapper.emulator.registry.EmulatorHandler;
+import com.zero.retrowrapper.emulator.registry.IHandler;
 
 public class ResourcesHandler extends EmulatorHandler implements IHandler
 {
