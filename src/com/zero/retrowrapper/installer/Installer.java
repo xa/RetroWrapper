@@ -206,10 +206,10 @@ public class Installer
 		    		try(FileOutputStream fos = new FileOutputStream(new File(wrapDir, versionWrapped+".json")))
 		    		{
 			    		Files.copy(new File(versions, version+File.separator+version+".jar").toPath(), new File(wrapDir, versionWrapped+".jar").toPath(), StandardCopyOption.REPLACE_EXISTING);
-			    		File jar = new File(URLDecoder.decode(Installer.class.getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8"));			    		
-			    		Files.copy(jar.toPath(), new File(libDir, "retrowrapper-installer.jar").toPath(), StandardCopyOption.REPLACE_EXISTING);
 		    			fos.write(json.getBytes());
 		    			fos.close();
+			    		File jar = new File(URLDecoder.decode(Installer.class.getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8"));			    		
+			    		Files.copy(jar.toPath(), new File(libDir, "retrowrapper-installer.jar").toPath(), StandardCopyOption.REPLACE_EXISTING);
 		    		} catch (IOException ee)
 		    		{
 						ee.printStackTrace();
