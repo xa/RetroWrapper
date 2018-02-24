@@ -1,6 +1,8 @@
 # RetroWrapper
 Enables you to play _fixed_ old versions of minecraft without ever touching .jar files, works even when offline!
 
+Needs Java 7 or higher!!
+
 **WHAT IS DONE**
 - Fixed indev loading
 - Skins (with offline cache!)

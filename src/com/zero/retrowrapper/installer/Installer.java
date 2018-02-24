@@ -46,7 +46,7 @@ public class Installer
 		}
 
 		workingDirectory = workingDirectory + File.separator + ".minecraft" + File.separator;
-		File directory = new File(workingDirectory);
+		final File directory = new File(workingDirectory);
 		directory.mkdirs();
 		
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -75,11 +75,11 @@ public class Installer
 		label2.setBounds(0, 250, 654, 20);
 		frame.add(label2);
 		
-		JComboBox<String> list = new JComboBox<String>();
+		final JComboBox<String> list = new JComboBox<String>();
 		list.setBounds(654/2 - 150, 100, 300, 30);
 		
 		File[] directories = null;
-		File versions = new File(directory, "versions");
+		final File versions = new File(directory, "versions");
 		if(versions.exists())
 		{
 			directories = versions.listFiles();
