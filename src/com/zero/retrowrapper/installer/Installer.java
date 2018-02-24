@@ -63,14 +63,14 @@ public class Installer
 		label.setBounds(0, 10, 654, 40);
 		frame.add(label);
 		
-		JLabel label3 = new JLabel("v1.2");
+		JLabel label3 = new JLabel("v1.2.1");
 		label3.setFont(label.getFont().deriveFont(12f));
 		label3.setHorizontalAlignment(SwingConstants.CENTER);
 		label3.setBounds(0, 30, 654, 40);
 		frame.add(label3);
 
 		JLabel label2 = new JLabel("\u00a92018 000");
-		label2.setFont(label.getFont().deriveFont(12f));
+		label2.setFont(label2.getFont().deriveFont(12f));
 		label2.setHorizontalAlignment(SwingConstants.CENTER);
 		label2.setBounds(0, 250, 654, 20);
 		frame.add(label2);
