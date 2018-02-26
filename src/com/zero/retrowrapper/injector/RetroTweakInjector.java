@@ -7,9 +7,13 @@ import net.minecraft.launchwrapper.injector.VanillaTweakInjector;
 import org.objectweb.asm.*;
 import org.objectweb.asm.tree.*;
 
+import com.zero.retrowrapper.emulator.EmulatorConfig;
+import com.zero.retrowrapper.hack.HackThread;
+
 import static org.objectweb.asm.Opcodes.*;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ListIterator;
 
 import javax.imageio.ImageIO;
@@ -32,9 +36,11 @@ public class RetroTweakInjector implements IClassTransformer
 			{
 				return null;
 			}
-	
+				
 			final ClassReader cr = new ClassReader(bytesOld);
-			RetroTweakClassWriter cw = new RetroTweakClassWriter(0);
+			final ClassNode classNodeOld = new ClassNode();
+			cr.accept(classNodeOld, ClassReader.EXPAND_FRAMES);
+			RetroTweakClassWriter cw = new RetroTweakClassWriter(0, classNodeOld.name.replaceAll("/", "."));
 			ClassVisitor s = new ClassVisitor(ASM4, cw) {};
 			cr.accept(s, 0);
 			
@@ -118,9 +124,9 @@ public class RetroTweakInjector implements IClassTransformer
 		}
 	}
 
-	public static File inject()
+	public static File inject() throws IllegalArgumentException, IllegalAccessException, ClassNotFoundException
 	{   	
-		System.out.println("Turning off ImageIO disk-caching");
+		System.out.println("Turning off ImageIO disk-caching");	
 		ImageIO.setUseCache(false);
 		VanillaTweakInjector.loadIconsOnFrames();
 		System.out.println("Setting gameDir to: " + Launch.minecraftHome);

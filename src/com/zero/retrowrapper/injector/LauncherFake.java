@@ -19,7 +19,7 @@ public class LauncherFake extends Applet implements AppletStub
 	{
 		this.params = params;
 	}
-
+	
 	@Override
 	public void appletResize(int width, int height) {}
 

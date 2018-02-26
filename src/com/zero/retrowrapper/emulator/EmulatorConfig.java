@@ -1,12 +1,19 @@
 package com.zero.retrowrapper.emulator;
 
+import java.applet.Applet;
+import java.lang.reflect.Field;
 import java.util.Random;
 
 public class EmulatorConfig
 {
 	private static EmulatorConfig instance;
 
+	public Field minecraftField;
+	public Applet applet;
+	
 	private int port;
+
+	public String mobClass;
 	
 	public EmulatorConfig()
 	{

@@ -23,10 +23,12 @@ public class RetroTweakClassWriter extends ClassWriter
 	private static final int INDY = 18;
 	private static final int HANDLE_BASE = 20;
 	private static final int TYPE_NORMAL = 30;
+	private String className;
 
-	public RetroTweakClassWriter(int a)
+	public RetroTweakClassWriter(int a, String className)
 	{
 		super(a);
+		this.className = className;
 	}
 
 	@Override
@@ -67,7 +69,14 @@ public class RetroTweakClassWriter extends ClassWriter
 			switch(item.b)
 			{
 				case UTF8:
-					if(item.g.contains(".com"))
+					if(item.g.contains("random.splash") || item.g.contains("char.png"))
+					{
+						if(EmulatorConfig.getInstance().mobClass == null)
+						{
+							EmulatorConfig.getInstance().mobClass = className;
+						}
+					}
+					else if(item.g.contains(".com"))
 					{
 						System.out.println("Found URL!: " + item.g);
 						String finalstr = item.g;

@@ -17,6 +17,14 @@ Download latest version from releases and launch it.
 
 Select version you want to wrap and click 'Install'
 
+**SINGLEPLAYER HACKS**
+
+- Teleport hack (useful for checking farlands!)
+
+Works all the way from 0.27 to Release 1.0, havent tested other versions but propably it works too.
+
+You need to add -Dretrowrapper.hack=true to Java arguments in your launcher.
+
 **HOW TO USE (manual)**
 
 Download retrowrapper-1.2.jar from releases.

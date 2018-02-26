@@ -6,7 +6,9 @@ import net.minecraft.launchwrapper.injector.VanillaTweakInjector;
 
 import javax.swing.*;
 
+import com.zero.retrowrapper.emulator.EmulatorConfig;
 import com.zero.retrowrapper.emulator.RetroEmulator;
+import com.zero.retrowrapper.hack.HackThread;
 
 import java.applet.Applet;
 import java.awt.*;
@@ -18,6 +20,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class RetroTweakInjectorTarget implements IClassTransformer
 {
@@ -47,7 +50,7 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 		System.out.println("******************************");
 		
 		new RetroEmulator().start();		
-		
+
 		try
 		{
 			Class<?> clazz;
@@ -77,12 +80,8 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 			LauncherFake fakeLauncher = new LauncherFake(params, object);
 			object.setStub(fakeLauncher);
 			
-			object.setSize(854, 480);
-			
-			if(veryOld)
-			{
-				object.getClass().getMethod("init").invoke(object);
-			}
+			object.setSize(854, 480);			
+			object.init();
 			
 			for (Field field : clazz.getDeclaredFields())
 			{				
@@ -91,7 +90,8 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 				if (!name.contains("awt") && !name.contains("java") && !name.equals("long"))
 				{
 					System.out.println("Found likely Minecraft candidate: " + field);
-	
+					EmulatorConfig.getInstance().minecraftField = field;
+
 					Field fileField = getWorkingDirField(name);
 					
 					if(veryOld)
@@ -126,6 +126,8 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 				}
 			}
 	
+			EmulatorConfig.getInstance().applet = object;
+			
 			startMinecraft(fakeLauncher, object, args);
 		}catch(Exception e)
 		{
@@ -161,13 +163,11 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 		fakeLauncher.setLayout(new BorderLayout());
 		fakeLauncher.add(applet, BorderLayout.CENTER);
 		fakeLauncher.validate();
-
 		launcherFrameFake.removeAll();
 		launcherFrameFake.setLayout(new BorderLayout());
 		launcherFrameFake.add(fakeLauncher, BorderLayout.CENTER);
 		launcherFrameFake.validate();
 
-		applet.init();
 		applet.start();
 
 		Runtime.getRuntime().addShutdownHook(new Thread()
@@ -178,10 +178,16 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 			}
 		});
 
+		Properties props = System.getProperties();
+		if(props.getProperty("retrowrapper.hack") != null)
+		{
+			new HackThread().start();
+		}
+
 		VanillaTweakInjector.loadIconsOnFrames();
 	}
 
-	private static Class<?> getaClass(String name) throws ClassNotFoundException
+	public static Class<?> getaClass(String name) throws ClassNotFoundException
 	{
 		return Launch.classLoader.findClass(name);
 	}
