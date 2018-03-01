@@ -63,7 +63,7 @@ public class Installer
 		label.setBounds(0, 10, 654, 40);
 		frame.add(label);
 		
-		JLabel label3 = new JLabel("v1.3");
+		JLabel label3 = new JLabel("v1.3.1");
 		label3.setFont(label.getFont().deriveFont(12f));
 		label3.setHorizontalAlignment(SwingConstants.CENTER);
 		label3.setBounds(0, 30, 654, 40);
