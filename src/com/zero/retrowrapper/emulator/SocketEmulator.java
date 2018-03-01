@@ -33,7 +33,6 @@ public class SocketEmulator
 	   	while(limit < 20)
 	   	{			   		
 	   		String line = ByteUtils.readLine(dis).trim();
-	   		
 	   		if(limit == 0)
 	   		{
 	   			get = line.split(" ")[1];

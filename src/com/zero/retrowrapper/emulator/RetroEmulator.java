@@ -39,7 +39,13 @@ public class RetroEmulator extends Thread implements Runnable
 			while(true)
 			{
 				Socket socket = server.accept();
-				new SocketEmulator(socket).parseIncoming();;
+				try
+				{
+					new SocketEmulator(socket).parseIncoming();;
+				}catch(Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		}
 		catch(Exception e)

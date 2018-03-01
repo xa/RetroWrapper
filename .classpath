@@ -3,6 +3,7 @@
 	<classpathentry kind="src" output="bin" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar"/>
-	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/org/ow2/asm/asm-all/5.2/asm-all-5.2.jar" sourcepath="/tmp/.org.sf.feeling.decompiler1519471787613/source/asm-all-5.2-sources-1519478971386.jar"/>
+	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/org/ow2/asm/asm-all/5.2/asm-all-5.2.jar" sourcepath="/tmp/.org.sf.feeling.decompiler1519648874867/source/asm-all-5.2-sources-1519666369322.jar"/>
+	<classpathentry kind="lib" path="/home/kcx/.minecraft/libraries/org/lwjgl/lwjgl/lwjgl/2.9.4-nightly-20150209/lwjgl-2.9.4-nightly-20150209.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

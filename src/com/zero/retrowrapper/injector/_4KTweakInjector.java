@@ -2,7 +2,6 @@ package com.zero.retrowrapper.injector;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.launchwrapper.Launch;
-import net.minecraft.launchwrapper.injector.VanillaTweakInjector;
 
 import javax.swing.*;
 import java.applet.Applet;
@@ -86,7 +85,7 @@ public class _4KTweakInjector implements IClassTransformer
 			}
 		});
 
-		VanillaTweakInjector.loadIconsOnFrames();
+		RetroTweakInjector.loadIconsOnFrames();
 	}
 
 	private static Class<?> getaClass(String name) throws ClassNotFoundException

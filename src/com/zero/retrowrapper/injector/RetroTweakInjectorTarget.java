@@ -2,7 +2,6 @@ package com.zero.retrowrapper.injector;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.launchwrapper.Launch;
-import net.minecraft.launchwrapper.injector.VanillaTweakInjector;
 
 import javax.swing.*;
 
@@ -184,7 +183,7 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 			new HackThread().start();
 		}
 
-		VanillaTweakInjector.loadIconsOnFrames();
+		RetroTweakInjector.loadIconsOnFrames();
 	}
 
 	public static Class<?> getaClass(String name) throws ClassNotFoundException
