@@ -17,7 +17,7 @@ Download latest version from releases and launch it.
 
 Select version you want to wrap and click 'Install'
 
-**ISOMECTRIC VIEWER**
+**ISOMETRIC VIEWER**
 
 Only for inf-20100627 and inf-20100618.
 
