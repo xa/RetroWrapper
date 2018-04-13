@@ -16,7 +16,10 @@ import java.awt.event.WindowEvent;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -50,6 +53,12 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 		
 		new RetroEmulator().start();		
 
+		Properties props = System.getProperties();
+		if(props.getProperty("retrowrapper.hack") != null)
+		{
+			new HackThread().start();
+		}
+		
 		try
 		{
 			Class<?> clazz;
@@ -59,7 +68,7 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 			try
 			{
 				clazz = getaClass("net.minecraft.client.MinecraftApplet");
-			} catch (ClassNotFoundException ignored) {
+			} catch (ClassNotFoundException ex) {
 				veryOld = true;
 				clazz = getaClass("com.mojang.minecraft.MinecraftApplet");
 			}
@@ -176,12 +185,6 @@ public class RetroTweakInjectorTarget implements IClassTransformer
 				applet.stop();
 			}
 		});
-
-		Properties props = System.getProperties();
-		if(props.getProperty("retrowrapper.hack") != null)
-		{
-			new HackThread().start();
-		}
 
 		RetroTweakInjector.loadIconsOnFrames();
 	}

@@ -3,7 +3,6 @@ package com.zero.retrowrapper.injector;
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.launchwrapper.Launch;
 
-import org.lwjgl.opengl.Display;
 import org.objectweb.asm.*;
 import org.objectweb.asm.tree.*;
 
@@ -143,7 +142,7 @@ public class RetroTweakInjector implements IClassTransformer
 			File e = new File(Launch.assetsDir, "icons/icon_16x16.png");
 			File bigIcon = new File(Launch.assetsDir, "icons/icon_32x32.png");
 			System.out.println("Loading current icons for window from: " + e + " and " + bigIcon);
-			Display.setIcon(new ByteBuffer[]{loadIcon(e), loadIcon(bigIcon)});
+//			Display.setIcon(new ByteBuffer[]{loadIcon(e), loadIcon(bigIcon)});
 			java.awt.Frame[] frames = java.awt.Frame.getFrames();
 			if (frames != null)
 			{

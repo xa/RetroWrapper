@@ -17,6 +17,16 @@ Download latest version from releases and launch it.
 
 Select version you want to wrap and click 'Install'
 
+**ISOMECTRIC VIEWER**
+
+Only for inf-20100627 and inf-20100618.
+
+Patch that version, and edit inf-20100627-wrapped.json
+
+Change tweakClass com.zero.retrowrapper.RetroTweaker to tweakClass com.zero.retrowrapper.IsomTweaker
+
+Done
+
 **SINGLEPLAYER HACKS**
 
 - Teleport hack (useful for checking farlands!)
