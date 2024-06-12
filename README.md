@@ -1,4 +1,14 @@
 # RetroWrapper
+
+**NOTICE**
+This isn't maintained anymore and probably will never be maintained again, sorry. This was a quick proof of concept that showed that it's possible to fix old Minecraft versions without touching original jars. If you are looking for a more up to date version with more features and cleaner code then check out this fork. 
+
+https://github.com/NeRdTheNed/RetroWrapper
+
+Never thought that my silly proof of concept would gain so much following, thank you. :) 
+
+**OLD README**
+
 Enables you to play _fixed_ old versions of minecraft without ever touching .jar files, works even when offline!
 
 Needs Java 7 or higher!!
